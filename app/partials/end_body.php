@@ -26,6 +26,7 @@
 		});
     </script>
     <script type="text/javascript" src="../assets/js/filter_by_category.js"></script>
+    <script type="text/javascript" src="../assets/js/search_product.js"></script>
     <script type="text/javascript" src="../assets/js/script.js"></script>
 </body>
 </html>

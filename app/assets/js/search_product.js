@@ -1,26 +1,28 @@
+/*preg_match("/[A-Z  | a-z]+/", $_POST['name'])*/
+
 $(document).ready(function() {
-	const listItems = $(".list-group-item");
+	const searchForm = $("#search-form");
 
-	listItems.each(function() {
-		$(this).click(function() {
-			let obj = {
-				"catId": $(this).attr("id")
-			};
+	searchForm.keypress(function(e) {
+		// 13 is the keycode for 'enter' key
+		if(e.which == 13) {
 			$.ajax({
-				"url": "../controllers/show_by_category.php",
+				"url": "../controllers/search_product.php",
 				"type": "POST",
-				"data": obj,
-				"success": filterByCatId
+				"data": {
+					"search": (searchForm.val()).toLowerCase()
+				},
+				"success": getResults
 			});
-		});
+		}
 	});
-
-	function filterByCatId(jsondata) {
+ 
+	function getResults(jsondata) {
 		if(jsondata !== "") {
-			const filteredItems = JSON.parse(jsondata);
+			const result = JSON.parse(jsondata);
 			let cardColumns = ``;
 			let listItems = ``;
-			filteredItems.forEach(function(item) {
+			result.forEach(function(item) {
 				listItems += `
 					<div class="card p-3">
 					  <img class="card-img-top" src="../assets/images/${item.image}" alt="Card image cap">
@@ -38,6 +40,10 @@ $(document).ready(function() {
 				`;
 			});
 			$(".products-container").html(cardColumns);
+		} else {
+			$(".products-container").html(`
+				<h1> No Product Found. </h1>
+			`);
 		}
 	}
 });

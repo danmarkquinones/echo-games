@@ -20,14 +20,14 @@
 ?>
 <header id="echo-header">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/game-shop/app/views/"><img class="brand-logo" src="../assets/images/brand-logo-1.png" width="30" height="30">Echo Games</a>
+    <a class="navbar-brand" href="/echo-games/app/views/"><img class="brand-logo" src="../assets/images/brand-logo-1.png" width="30" height="30">Echo Games</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link <?php if($section == "catalog") { echo "active"; } ?>" href="/game-shop/app/views/catalog.php?section=catalog"><i class="fas fa-book"></i> Catalog</a>
+          <a class="nav-link <?php if($section == "catalog") { echo "active"; } ?>" href="/echo-games/app/views/catalog.php?section=catalog"><i class="fas fa-book"></i> Catalog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <?php if($section == "cart") { echo "active"; } ?>" href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
