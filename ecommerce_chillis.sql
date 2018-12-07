@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2018 at 01:16 AM
+-- Generation Time: Dec 07, 2018 at 09:08 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -89,7 +89,8 @@ CREATE TABLE `orders` (
 CREATE TABLE `orders_items` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL
+  `item_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -103,6 +104,14 @@ CREATE TABLE `payment_modes` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `payment_modes`
+--
+
+INSERT INTO `payment_modes` (`id`, `name`) VALUES
+(1, 'COD'),
+(2, 'PayPal');
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +122,15 @@ CREATE TABLE `statuses` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`id`, `name`) VALUES
+(1, 'pending'),
+(2, 'completed'),
+(3, 'cancelled');
 
 -- --------------------------------------------------------
 
@@ -234,12 +252,12 @@ ALTER TABLE `orders_items`
 -- AUTO_INCREMENT for table `payment_modes`
 --
 ALTER TABLE `payment_modes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `statuses`
 --
 ALTER TABLE `statuses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --

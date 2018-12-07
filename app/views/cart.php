@@ -23,10 +23,10 @@
 								</tr>
 							</thead>
 							<tbody>
+								<?php $cart_total = 0; ?>
 								<?php if(isset($_SESSION["cart"]) && count($_SESSION["cart"]) != 0 ):?>
 									<?php
 										require_once("../controllers/connect.php");
-										$cart_total = 0;
 										foreach ($_SESSION["cart"] as $id => $qty) {
 											$sql = "SELECT * FROM items WHERE id = '$id' ";
 											$item_info = mysqli_query($conn,$sql);
@@ -36,17 +36,29 @@
 											$cart_total += $subtotal;
 									?>
 										<tr>
-											<td><?php echo $item["name"] ?></td>
-											<td><?php echo $item["price"] ?></td>
-											<td><input class="form-control text-right" type="number" value="<?php echo $qty ?>" data-id="<?php echo $id ?>"></td>
-											<td><?php echo $subtotal ?></td>
-											<td><button class="btn btn-danger item-remove text-center" data-id="<?php echo $id ?>">Remove From Cart</button></td>
+											<td class="item_name"><?php echo $item["name"] ?></td>
+											<td class="item_price"><?php echo $item["price"] ?></td>
+											<td class="item_quantity"><input class="form-control text-right" type="number" value="<?php echo $qty ?>" data-id="<?php echo $id ?>"></td>
+											<td class="item_subtotal text-center"><?php echo $subtotal ?></td>
+											<td><button class="btn btn-block btn-danger item-remove text-center" data-id="<?php echo $id ?>"> <i class="fas fa-times-circle"></i> Remove</button></td>
 										</tr>
-
 								<?php } mysqli_close($conn); ?>
 							<?php endif; ?>
-
 							</tbody>
+							<tfoot>
+								<tr>
+									<td class="text-right font-weight-bold align-middle" colspan="3">Total:</td>
+									<td id="total_price" class="text-center font-weight-bold align-middle">
+										<?php echo $cart_total; ?>
+									</td>
+									<td><a class="btn btn-block btn-warning clear-all text-center" href="../controllers/clear_cart.php"><i class="far fa-times-circle"></i> Clear Cart</a></td>
+								</tr>
+								<tr>
+									<td class="text-right align-middle" colspan="5">
+										<a href="checkout.php" class="btn btn-primary">Checkout</a>
+									</td>
+								</tr>
+							</tfoot>
 						</table>
 					</div>
 				</div>
