@@ -12,6 +12,6 @@ $sql = "SELECT * FROM items where id = '$prod_id'";
 
 $result = mysqli_query($conn, $sql);;
 
-$product = mysqli_fetch_assoc($result);	
+$product = mysqli_fetch_assoc($result);
 
 mysqli_close($conn);

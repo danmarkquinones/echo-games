@@ -1,4 +1,4 @@
-<?php 
+<?php
 $pageTitle = "Catalog";
 require("../controllers/get_categories.php");
 require("../controllers/get_products.php");
@@ -8,7 +8,6 @@ require_once("../partials/start_body.php"); ?>
 
 	<main id="main" class="role">
 		<div class="container">
-			
 			<section class="row pt-5">
 				<div class="col-md-3">
 					<h2 class="text-center"> COLLECTION </h2>
@@ -42,13 +41,16 @@ require_once("../partials/start_body.php"); ?>
 							    <h5 class="card-title mb-1">
 							    	<a href="product.php?id=<?php echo $item['id'] ?>">
 							    		<?php echo $item["name"]; ?>
-							    	</a>	
+							    	</a>
 							    </h5>
 							    <p class="card-text mb-1 text-danger">PHP <?php echo number_format($item["price"], 2, ".", ",") ?></p>
-							    <a href="#" class="btn btn-sm btn-outline-primary">Add To Cart</a>
+
+							    <!-- FOR ADD TO CART -->
+							    <input type="number" class="form-control mb-2" value=1>
+							    <button data-id="<?php echo $item["id"] ?>" class="btn btn-sm btn-outline-primary add-cart">Add To Cart</button>
 							  </div>
 							</div>
-						<?php endforeach; ?>	
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</section>
