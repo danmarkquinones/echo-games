@@ -30,7 +30,7 @@ $(document).ready(function(){
 					//for each element with class = "item_subtotal"
 					total += parseFloat($(this).text());
 				});
-				$("#total_price").text(total);
+				$("#total_price").text(total.toFixed(2));
 		 	}
 		 })
 	})
