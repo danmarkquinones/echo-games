@@ -61,7 +61,7 @@
         <?php else: ?>
 
           <li class="nav-item">
-            <a class="nav-link" href=""> Welcome, <?php echo $_SESSION["user"]["username"]; ?></a>
+            <a class="nav-link" href="../views/profile.php"> Welcome, <?php echo $_SESSION["user"]["username"]; ?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../controllers/logout.php">Logout</a>

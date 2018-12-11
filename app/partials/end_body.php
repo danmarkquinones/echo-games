@@ -32,6 +32,7 @@
     <script type="text/javascript" src="../assets/js/updatecart.js"></script>
     <script type="text/javascript" src="../assets/js/edit_cart_quantity.js"></script>
     <script type="text/javascript" src="../assets/js/delete_from_cart.js"></script>
+    <script type="text/javascript" src="../assets/js/update_user.js"></script>
     <script type="text/javascript" src="../assets/js/script.js"></script>
 </body>
 </html>
