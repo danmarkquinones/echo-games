@@ -8,6 +8,7 @@
 	$lastname = htmlspecialchars($_POST["lastname"]);
 	$email = htmlspecialchars($_POST["email"]);
 	$address = htmlspecialchars($_POST["home-address"]);
+	$role_id = 2;
 	//bakit nag query eh wala pa , para macheck kung may taken na yung username
 	$sql_username = "SELECT*FROM users WHERE username = '$username' ";
 	$result_username = mysqli_query($conn,$sql_username);
@@ -22,7 +23,7 @@
 	}elseif(mysqli_num_rows($result_email) > 0 ) {
 		die("email exists");
 	}else{
-		$insert_query = "INSERT INTO users (username,password,first_name,last_name,email,home_address) VALUES ('$username','$password','$firstname','$lastname','$email','$address')";
+		$insert_query = "INSERT INTO users (username,password,first_name,last_name,email,home_address,role_id) VALUES ('$username','$password','$firstname','$lastname','$email','$address', $role_id)";
 		$result = mysqli_query($conn, $insert_query);
 	}
 

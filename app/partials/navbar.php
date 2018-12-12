@@ -26,27 +26,34 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link <?php if($section == "catalog") { echo "active"; } ?>" href="catalog.php?section=catalog"><i class="fas fa-book"></i> Catalog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?php if($section == "cart") { echo "active"; } ?>" href="cart.php?section=cart"><i class="fas fa-shopping-cart">
+        <?php if(!isset($_SESSION['user']) || (isset($_SESSION['user']) && $_SESSION['user']['role_id'] == 2 )) { ?>
+          <li class="nav-item">
+            <a class="nav-link <?php if($section == "catalog") { echo "active"; } ?>" href="catalog.php?section=catalog"><i class="fas fa-book"></i> Catalog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <?php if($section == "cart") { echo "active"; } ?>" href="cart.php?section=cart"><i class="fas fa-shopping-cart">
 
-            <sup id="cart-count" class="badge badge-light small">
+              <sup id="cart-count" class="badge badge-light small">
 
-              <?php if(isset($_SESSION["cart"])): ?>
-                <?php echo array_sum($_SESSION["cart"]); ?>
-              <?php else: ?>
-                <?php echo 0 ;?>
-              <?php endif; ?>
-            </sup>
-          </i>
+                <?php if(isset($_SESSION["cart"])): ?>
+                  <?php echo array_sum($_SESSION["cart"]); ?>
+                <?php else: ?>
+                  <?php echo 0 ;?>
+                <?php endif; ?>
+              </sup>
+            </i>
 
-          Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?php if($section == "about_us") { echo "active"; } ?>" href="#"><i class="fas fa-info-circle"></i> About Us</a>
-        </li>
+            Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <?php if($section == "about_us") { echo "active"; } ?>" href="#"><i class="fas fa-info-circle"></i> About Us</a>
+          </li>
+        <?php } ?>
+        <?php if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == 1) { ?>
+          <li class="nav-item">
+            <a href="items.php" class="nav-link">EDIT ITEMS</a>
+          </li>
+        <?php } ?>
 
 <!-- KAPAG HINDI PA NAKAKALOGIN -->
         <?php if(!isset($_SESSION["user"])): ?>
